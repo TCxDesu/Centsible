@@ -1,0 +1,538 @@
+package centsible.frames.user;
+
+import centsible.datas.Accounts;
+import centsible.functions.AuditFunction;
+import centsible.functions.GeneralFunction;
+import centsible.functions.UserFunctions;
+import java.awt.event.KeyEvent;
+import java.text.DecimalFormat;
+import javax.swing.JOptionPane;
+
+public class SendMoney extends javax.swing.JFrame {
+
+    int xMouse = 0, yMouse = 0;
+
+    UserFunctions uf;
+    GeneralFunction gf;
+
+    String amount = "";
+
+    DecimalFormat df;
+
+    public static String name;
+
+    public static String bankName;
+
+    public SendMoney() {
+        initComponents();
+        setLocationRelativeTo(null);
+
+        uf = new UserFunctions();
+        gf = new GeneralFunction();
+        df = new DecimalFormat("#,###.00");
+
+        txtAmount.getParent().requestFocusInWindow();
+        txtEmail.setText(uf.getEmail(UserFunctions.username));
+    }
+
+    @SuppressWarnings("unchecked")
+    // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
+    private void initComponents() {
+
+        jPanel1 = new javax.swing.JPanel();
+        lblLogo = new javax.swing.JLabel();
+        lblBack = new javax.swing.JLabel();
+        txtAccNum = new javax.swing.JTextField();
+        txtAccName = new javax.swing.JTextField();
+        txtEmail = new javax.swing.JTextField();
+        txtOTP = new javax.swing.JTextField();
+        lblAccNum = new javax.swing.JLabel();
+        lblAccName = new javax.swing.JLabel();
+        lblReceipt = new javax.swing.JLabel();
+        lblOTP = new javax.swing.JLabel();
+        lblBank = new javax.swing.JLabel();
+        lblPeso = new javax.swing.JLabel();
+        btnConfirm = new centsible.components.CustomButton();
+        btnSendOTP = new centsible.components.CustomButtonOTP();
+        txtAmount = new javax.swing.JTextField();
+        lblSirkol = new javax.swing.JLabel();
+        jPanel2 = new javax.swing.JPanel();
+        lblX = new javax.swing.JLabel();
+        lblMin = new javax.swing.JLabel();
+
+        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setUndecorated(true);
+        setSize(new java.awt.Dimension(1366, 798));
+
+        jPanel1.setBackground(new java.awt.Color(12, 150, 156));
+        jPanel1.setPreferredSize(new java.awt.Dimension(1366, 768));
+        jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        lblLogo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/userImages/Centsible 209 50.png"))); // NOI18N
+        jPanel1.add(lblLogo, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 30, -1, -1));
+
+        lblBack.setIcon(new javax.swing.ImageIcon(getClass().getResource("/userImages/Back Button 74 74.png"))); // NOI18N
+        lblBack.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                lblBackMouseClicked(evt);
+            }
+        });
+        jPanel1.add(lblBack, new org.netbeans.lib.awtextra.AbsoluteConstraints(1260, 670, -1, -1));
+
+        txtAccNum.setFont(new java.awt.Font("ITC Souvenir", 0, 35)); // NOI18N
+        txtAccNum.addCaretListener(new javax.swing.event.CaretListener() {
+            public void caretUpdate(javax.swing.event.CaretEvent evt) {
+                txtAccNumCaretUpdate(evt);
+            }
+        });
+        txtAccNum.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txtAccNumKeyTyped(evt);
+            }
+        });
+        jPanel1.add(txtAccNum, new org.netbeans.lib.awtextra.AbsoluteConstraints(442, 243, 490, 55));
+
+        txtAccName.setEditable(false);
+        txtAccName.setFont(new java.awt.Font("ITC Souvenir", 0, 35)); // NOI18N
+        jPanel1.add(txtAccName, new org.netbeans.lib.awtextra.AbsoluteConstraints(442, 339, 490, 55));
+
+        txtEmail.setEditable(false);
+        txtEmail.setFont(new java.awt.Font("ITC Souvenir", 0, 35)); // NOI18N
+        jPanel1.add(txtEmail, new org.netbeans.lib.awtextra.AbsoluteConstraints(442, 437, 490, 55));
+
+        txtOTP.setFont(new java.awt.Font("ITC Souvenir", 0, 35)); // NOI18N
+        txtOTP.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        txtOTP.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txtOTPKeyTyped(evt);
+            }
+        });
+        jPanel1.add(txtOTP, new org.netbeans.lib.awtextra.AbsoluteConstraints(442, 535, 366, 55));
+
+        lblAccNum.setFont(new java.awt.Font("Lovelo Black", 0, 18)); // NOI18N
+        lblAccNum.setForeground(new java.awt.Color(3, 47, 48));
+        lblAccNum.setText("Account Number");
+        jPanel1.add(lblAccNum, new org.netbeans.lib.awtextra.AbsoluteConstraints(442, 218, 175, -1));
+
+        lblAccName.setFont(new java.awt.Font("Lovelo Black", 0, 18)); // NOI18N
+        lblAccName.setForeground(new java.awt.Color(3, 47, 48));
+        lblAccName.setText("Account Name");
+        jPanel1.add(lblAccName, new org.netbeans.lib.awtextra.AbsoluteConstraints(442, 316, 156, -1));
+
+        lblReceipt.setFont(new java.awt.Font("Lovelo Black", 0, 18)); // NOI18N
+        lblReceipt.setForeground(new java.awt.Color(3, 47, 48));
+        lblReceipt.setText("Send Receipt To Email");
+        jPanel1.add(lblReceipt, new org.netbeans.lib.awtextra.AbsoluteConstraints(442, 412, 201, -1));
+
+        lblOTP.setFont(new java.awt.Font("Lovelo Black", 0, 18)); // NOI18N
+        lblOTP.setForeground(new java.awt.Color(3, 47, 48));
+        lblOTP.setText("Confirmation");
+        jPanel1.add(lblOTP, new org.netbeans.lib.awtextra.AbsoluteConstraints(442, 510, -1, -1));
+
+        lblBank.setIcon(new javax.swing.ImageIcon(getClass().getResource("/userImages/centsible_send_money.png"))); // NOI18N
+        jPanel1.add(lblBank, new org.netbeans.lib.awtextra.AbsoluteConstraints(462, 78, -1, -1));
+
+        lblPeso.setFont(new java.awt.Font("ITC Souvenir", 0, 35)); // NOI18N
+        lblPeso.setForeground(new java.awt.Color(255, 255, 255));
+        lblPeso.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        lblPeso.setText("PHP");
+        jPanel1.add(lblPeso, new org.netbeans.lib.awtextra.AbsoluteConstraints(590, 105, 80, 42));
+
+        btnConfirm.setForeground(new java.awt.Color(255, 255, 255));
+        btnConfirm.setText("CONFIRM");
+        btnConfirm.setBorderColor(new java.awt.Color(12, 150, 156));
+        btnConfirm.setFont(new java.awt.Font("Segoe UI Black", 0, 20)); // NOI18N
+        btnConfirm.setRadius(60);
+        btnConfirm.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnConfirmActionPerformed(evt);
+            }
+        });
+        jPanel1.add(btnConfirm, new org.netbeans.lib.awtextra.AbsoluteConstraints(600, 630, 180, 50));
+
+        btnSendOTP.setText("SEND OTP");
+        btnSendOTP.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        btnSendOTP.setRadius(35);
+        btnSendOTP.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnSendOTPActionPerformed(evt);
+            }
+        });
+        jPanel1.add(btnSendOTP, new org.netbeans.lib.awtextra.AbsoluteConstraints(820, 550, 110, 30));
+
+        txtAmount.setBackground(new java.awt.Color(119, 196, 199));
+        txtAmount.setFont(new java.awt.Font("ITC Souvenir", 0, 35)); // NOI18N
+        txtAmount.setForeground(new java.awt.Color(255, 255, 255));
+        txtAmount.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        txtAmount.setText("0.00");
+        txtAmount.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 5, 0, new java.awt.Color(255, 255, 255)));
+        txtAmount.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                txtAmountFocusGained(evt);
+            }
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                txtAmountFocusLost(evt);
+            }
+        });
+        txtAmount.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txtAmountKeyTyped(evt);
+            }
+        });
+        jPanel1.add(txtAmount, new org.netbeans.lib.awtextra.AbsoluteConstraints(680, 100, 200, 50));
+
+        lblSirkol.setIcon(new javax.swing.ImageIcon(getClass().getResource("/userImages/Back Ground Circle 768 768.png"))); // NOI18N
+        jPanel1.add(lblSirkol, new org.netbeans.lib.awtextra.AbsoluteConstraints(301, 0, -1, -1));
+
+        jPanel2.setBackground(new java.awt.Color(3, 47, 48));
+        jPanel2.setPreferredSize(new java.awt.Dimension(1366, 30));
+        jPanel2.addMouseMotionListener(new java.awt.event.MouseMotionAdapter() {
+            public void mouseDragged(java.awt.event.MouseEvent evt) {
+                jPanel2MouseDragged(evt);
+            }
+        });
+        jPanel2.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                jPanel2MousePressed(evt);
+            }
+        });
+
+        lblX.setIcon(new javax.swing.ImageIcon(getClass().getResource("/userImages/x.png"))); // NOI18N
+        lblX.setPreferredSize(new java.awt.Dimension(30, 30));
+        lblX.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                lblXMouseClicked(evt);
+            }
+        });
+
+        lblMin.setIcon(new javax.swing.ImageIcon(getClass().getResource("/userImages/Minimize.png"))); // NOI18N
+        lblMin.setToolTipText("");
+        lblMin.setPreferredSize(new java.awt.Dimension(30, 30));
+        lblMin.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                lblMinMouseClicked(evt);
+            }
+        });
+
+        javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
+        jPanel2.setLayout(jPanel2Layout);
+        jPanel2Layout.setHorizontalGroup(
+            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
+                .addContainerGap(1294, Short.MAX_VALUE)
+                .addComponent(lblMin, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(lblX, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap())
+        );
+        jPanel2Layout.setVerticalGroup(
+            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(lblX, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
+                .addComponent(lblMin, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, Short.MAX_VALUE))
+        );
+
+        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
+        getContentPane().setLayout(layout);
+        layout.setHorizontalGroup(
+            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(layout.createSequentialGroup()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+        layout.setVerticalGroup(
+            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, 0)
+                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap())
+        );
+
+        pack();
+    }// </editor-fold>//GEN-END:initComponents
+
+    private void lblXMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblXMouseClicked
+        UserFunctions.logOut(this);
+    }//GEN-LAST:event_lblXMouseClicked
+
+    private void lblMinMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblMinMouseClicked
+        setState(this.ICONIFIED);
+    }//GEN-LAST:event_lblMinMouseClicked
+
+    private void lblBackMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblBackMouseClicked
+        this.dispose();
+        new Homescreen(UserFunctions.username).setVisible(true);
+    }//GEN-LAST:event_lblBackMouseClicked
+
+    private void btnConfirmActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnConfirmActionPerformed
+
+        AuditFunction au = new AuditFunction();
+
+        if (txtAmount.getText().trim().equals("0.00")
+                || txtAccNum.getText().trim().equals("")
+                || txtAccName.getText().trim().equals("")
+                || txtOTP.getText().trim().equals("")) {
+            JOptionPane.showMessageDialog(this, "Please fill out the form!");
+        } else {
+            String receiver = txtAccNum.getText().trim();
+            int i = 0;
+
+            for (Accounts a : GeneralFunction.list) {
+                if (receiver.equals(a.getAccID())) {
+                    if (a.getUsername().equals(UserFunctions.username)) {
+                        i = 0;
+                        break;
+                    }
+                } else {
+                    i = 1;
+                }
+            }
+
+            if (i == 0) {
+                JOptionPane.showMessageDialog(null, "You cannot send money "
+                        + "to your own account.");
+            } else if (i == 1) {
+                //if (txtOTP.getText().trim().equals(UserFunctions.code)) { disabled muna eto ung nagloko sa presentation.
+                    double amount = Double.parseDouble(txtAmount.getText()
+                            .replaceAll(",", ""));
+                    String accName = txtAccName.getText();
+                    String accNum = txtAccNum.getText();
+
+                    if (UserFunctions.balance >= amount) {
+
+                        String ver = gf.sendMoneyInfoConfirm(df.format(amount),
+                                accNum, accName, name);
+                        int option = JOptionPane.showConfirmDialog(this,
+                                ver, "Send Money Information",
+                                JOptionPane.OK_CANCEL_OPTION,
+                                JOptionPane.INFORMATION_MESSAGE);
+                        if (option == JOptionPane.OK_OPTION) {
+
+                            uf.sendMoneySendReceipt(df.format(amount), accNum,
+                                    accName, name, txtEmail.getText());
+                            uf.receiveMoneySendReceipt(df.format(amount), 
+                                    accNum, accName, name);
+                            uf.subtractToBalance(UserFunctions.username, 
+                                    amount);
+                            uf.addToAccount(accNum, amount);
+
+                            gf.writeTransaction(UserFunctions.userID, 
+                                    "Sent Money to " + accName, "-" + 
+                                            df.format(amount));
+                            gf.writeTransaction(accNum, "Received Money from "
+                                    + UserFunctions.username, "+"
+                                    + df.format(amount));
+                            au.createAudit(UserFunctions.username, "Sent "
+                                    + df.format(amount) + " to " + accName);
+                            new TransferSuccess().setVisible(true);
+                            dispose();
+                        }
+                    } else {
+                        JOptionPane.showMessageDialog(null,
+                                "Insufficient Balance.");
+                    }
+                }
+//                else {
+//                    JOptionPane.showMessageDialog(null, "Incorrect OTP code.");
+//                }
+//            }
+        }
+
+    }//GEN-LAST:event_btnConfirmActionPerformed
+
+    private void btnSendOTPActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSendOTPActionPerformed
+        uf.sendOTPSendMoney(txtEmail, txtAccNum);
+    }//GEN-LAST:event_btnSendOTPActionPerformed
+
+    private void txtOTPKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtOTPKeyTyped
+        String temp = txtAmount.getText();
+
+        if (temp.indexOf('.') == -1) {
+            char c = evt.getKeyChar();
+            if (!((c >= '0') && (c <= '9')
+                    || (c == KeyEvent.VK_PERIOD)
+                    || (c == KeyEvent.VK_BACK_SPACE)
+                    || (c == KeyEvent.VK_DELETE))) {
+                getToolkit().beep();
+                evt.consume();
+            }
+        } else {
+            char c = evt.getKeyChar();
+            if (!((c >= '0') && (c <= '9')
+                    || (c == KeyEvent.VK_BACK_SPACE)
+                    || (c == KeyEvent.VK_DELETE))) {
+                getToolkit().beep();
+                evt.consume();
+            }
+        }
+    }//GEN-LAST:event_txtOTPKeyTyped
+
+    private void txtAmountKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtAmountKeyTyped
+        char c = evt.getKeyChar();
+        if (!((c >= '0') && (c <= '9')
+                || (c == KeyEvent.VK_PERIOD)
+                || (c == KeyEvent.VK_BACK_SPACE)
+                || (c == KeyEvent.VK_DELETE))) {
+            getToolkit().beep();
+            evt.consume();
+        }
+
+
+    }//GEN-LAST:event_txtAmountKeyTyped
+
+    private void txtAmountFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtAmountFocusGained
+        txtAmount.setText("");
+        txtAmount.setText(amount);
+    }//GEN-LAST:event_txtAmountFocusGained
+
+    private void txtAmountFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtAmountFocusLost
+        amount = txtAmount.getText();
+
+        try {
+            if (amount.substring(amount.length() - 2).equals("00")
+                    && amount.indexOf('.') > -1) {
+                amount = amount.substring(0, amount.length() - 3);
+            }
+        } catch (Exception e) {
+        }
+
+        if (amount.trim().length() != 0 && !amount.trim().equals("0.00")) {
+            txtAmount.setText(df.format(Double.parseDouble(amount)));
+        } else {
+            txtAmount.setText("0.00");
+            amount = "";
+        }
+    }//GEN-LAST:event_txtAmountFocusLost
+
+    private void txtAccNumCaretUpdate(javax.swing.event.CaretEvent evt) {//GEN-FIRST:event_txtAccNumCaretUpdate
+        String x = "";
+        System.out.println(x);
+
+        try {
+            for (Accounts a : GeneralFunction.list) {
+                if (a.getAccID().equals(txtAccNum.getText())) {
+                    x = a.getUsername();
+                    System.out.println(x);
+                }
+            }
+        } catch (Exception e) {
+        }
+        txtAccName.setText(x);
+    }//GEN-LAST:event_txtAccNumCaretUpdate
+
+    private void txtAccNumKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtAccNumKeyTyped
+        char c = evt.getKeyChar();
+        if (!((c >= '0') && (c <= '9')
+                || (c == KeyEvent.VK_PERIOD)
+                || (c == KeyEvent.VK_BACK_SPACE)
+                || (c == KeyEvent.VK_DELETE))) {
+            getToolkit().beep();
+            evt.consume();
+        }
+    }//GEN-LAST:event_txtAccNumKeyTyped
+
+    private void jPanel2MouseDragged(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel2MouseDragged
+        int x = evt.getXOnScreen();
+        int y = evt.getYOnScreen();
+
+        this.setLocation(x - xMouse, y - yMouse);
+    }//GEN-LAST:event_jPanel2MouseDragged
+
+    private void jPanel2MousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel2MousePressed
+        xMouse = evt.getX();
+        yMouse = evt.getY();
+    }//GEN-LAST:event_jPanel2MousePressed
+
+    /**
+     * @param args the command line arguments
+     */
+    public static void main(String args[]) {
+        /* Set the Nimbus look and feel */
+        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
+        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
+         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
+         */
+        try {
+            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
+                if ("Nimbus".equals(info.getName())) {
+                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
+                    break;
+                }
+            }
+        } catch (ClassNotFoundException ex) {
+            java.util.logging.Logger.getLogger(SendMoney.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        } catch (InstantiationException ex) {
+            java.util.logging.Logger.getLogger(SendMoney.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        } catch (IllegalAccessException ex) {
+            java.util.logging.Logger.getLogger(SendMoney.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
+            java.util.logging.Logger.getLogger(SendMoney.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        }
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+
+        /* Create and display the form */
+        java.awt.EventQueue.invokeLater(new Runnable() {
+            public void run() {
+                new SendMoney().setVisible(true);
+            }
+        });
+    }
+
+    // Variables declaration - do not modify//GEN-BEGIN:variables
+    private centsible.components.CustomButton btnConfirm;
+    private centsible.components.CustomButtonOTP btnSendOTP;
+    private javax.swing.JPanel jPanel1;
+    private javax.swing.JPanel jPanel2;
+    private javax.swing.JLabel lblAccName;
+    private javax.swing.JLabel lblAccNum;
+    private javax.swing.JLabel lblBack;
+    private javax.swing.JLabel lblBank;
+    private javax.swing.JLabel lblLogo;
+    private javax.swing.JLabel lblMin;
+    private javax.swing.JLabel lblOTP;
+    private javax.swing.JLabel lblPeso;
+    private javax.swing.JLabel lblReceipt;
+    private javax.swing.JLabel lblSirkol;
+    private javax.swing.JLabel lblX;
+    private javax.swing.JTextField txtAccName;
+    private javax.swing.JTextField txtAccNum;
+    private javax.swing.JTextField txtAmount;
+    private javax.swing.JTextField txtEmail;
+    private javax.swing.JTextField txtOTP;
+    // End of variables declaration//GEN-END:variables
+}
